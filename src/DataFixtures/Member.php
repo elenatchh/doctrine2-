@@ -41,7 +41,7 @@ class Member extends Fixture
             $produit -> setDescription($faker -> text());
             $produit -> setPrix($faker -> numberBetween(9,100));
             $produit -> setStock($faker -> numberBetween(0,100));
-            $produit -> setPhoto($faker->imageUrl(640, 480, 'cats'));
+            $produit -> setPhoto($faker->imageUrl(150, 150, 'cats'));
             $produit -> setCreatedAt(new \DateTimeImmutable());
 
             $categorie -> setTitre($faker -> text());

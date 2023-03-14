@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\MembreRepository;
+use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,10 +33,11 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/produit', name: 'app_produit')]
-    public function produit(): Response
+    public function produit(ProduitRepository $produitrepo): Response
     {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+        $produits=$produitrepo->findAll();
+        return $this->render('home/produit.html.twig', [
+            'produits' => $produits,
         ]);
     }
 }

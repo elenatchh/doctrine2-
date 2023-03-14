@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<h1> Bienvenu </h1>
+
+<pre>
+{{dump(produits[0].titre)}}
+</pre>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">Description</th>
+      <th scope="col">Prix</th>
+      <th scope="col">stock</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for produit in produits %}
+
+    <tr>
+      <td>{{produit.titre}}</td>
+      <td>{{produit.description}}</td>
+      <td>{{produit.prix}}</td>
+    <td>{{produit.stock}}</td>
+    <td><img src={{produit.photo}}></img></td>
+    <td><button>ajouter</button></td>
+    </tr>
+
+{% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}
