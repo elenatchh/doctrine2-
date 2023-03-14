@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<h1> Bienvenu </h1>
+
+<pre>
+{{dump(categories[0].titre)}}
+</pre>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">Description</th>
+      <th scope="col">slug</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for categorie in categories %}
+
+    <tr>
+      <td>{{categorie.titre}}</td>
+      <td>{{categorie.description}}</td>
+      <td>{{categorie.slug}}</td>
+    </tr>
+
+{% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}

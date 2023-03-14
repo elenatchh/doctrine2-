@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Repository\CategorieRepository;
+use App\Repository\CommandeRepository;
 use App\Repository\MembreRepository;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,10 +20,11 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/categorie', name: 'app_categorie')]
-    public function categorie(): Response
+    public function categorie(CategorieRepository $categorierepo): Response
     {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+        $categories = $categorierepo->findAll();
+        return $this->render('home/categorie.html.twig', [
+            'categories' => $categories,
         ]);
     }
     #[Route('/membre', name: 'app_membre')]
@@ -38,6 +41,14 @@ class HomeController extends AbstractController
         $produits=$produitrepo->findAll();
         return $this->render('home/produit.html.twig', [
             'produits' => $produits,
+        ]);
+    }
+    #[Route('/commande', name: 'app_commande')]
+    public function commande(CommandeRepository $commanderepo): Response
+    {
+        $commandes=$commanderepo->findAll();
+        return $this->render('home/commande.html.twig', [
+            'commandes' => $commandes,
         ]);
     }
 }
